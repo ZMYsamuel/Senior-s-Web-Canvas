@@ -1,147 +1,50 @@
-/* General body and html styling */
-body,
-html {
-  margin: 0;
+body, html {
+  margin: 40px;
   padding: 0;
   height: 100%;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  /* Gradient background */
-  font-family: 'Arial', sans-serif;
-  color: #333;
-}
-
-/* Header styling */
-.header {
-  position: relative;
-  padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url('./src/background.png');
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
 }
 
 .time-widget {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  background-color: #ffc3a0; /* Light peach */
+  border: 2px solid #ff6b6b; /* Coral pink */
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 24px;
   display: flex;
   align-items: center;
-  font-size: 18px;
-  color: #ff6b6b;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.time-text {
+  color: #ff6b6b; /* Coral pink */
 }
 
 .clock-icon {
-  width: 25px;
+  width: 30px;
+  height: auto;
   margin-right: 10px;
 }
 
-/* Main content styling */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-/* Canvas container styling */
-.canvas-container {
-  margin-bottom: 20px;
-}
-
-canvas {
-  border: 3px solid #ff6b6b;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 100%;
-  cursor: crosshair;
-}
-
-/* Controls container styling */
-.controls-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.color-settings,
-.font-settings,
-.tool-buttons,
-.canvas-actions {
-  background-color: #fff;
-  border: 2px solid #ff6b6b;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #ff6b6b;
-}
-
-/* Slider styling */
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.slider-container input[type="range"] {
-  width: 150px;
-  height: 8px;
-  background: #f0f0f0;
-  border-radius: 5px;
-  outline: none;
-}
-
-#currentColor {
-  width: 30px;
-  height: 30px;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  background-color: #000;
-}
-
-/* Button styling */
-.btn-cute {
-  padding: 10px 15px;
-  background-color: #ff6b6b;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn-cute:hover {
-  background-color: #ff4d4d;
-  transform: scale(1.05);
-}
-
-.btn.active {
-  background-color: #333;
-}
-
-.icon {
-  width: 18px;
-  height: auto;
-  margin-right: 5px;
-}
-
-/* Checkbox styling */
 .fill-checkbox {
   display: none;
 }
 
 .fill-label {
-  font-size: 14px;
-  color: #ff6b6b;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 16px;
+  color: #ffac33; /* Yellow */
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  user-select: none; /* Prevent text selection */
+  margin-right: 10px;
 }
 
 .fill-label::before {
@@ -149,33 +52,170 @@ h3 {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 2px solid #ff6b6b;
-  border-radius: 3px;
   background-color: #fff;
+  border: 2px solid #ffac33; /* Yellow */
+  border-radius: 5px;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
-.fill-checkbox:checked+.fill-label::before {
-  background-color: #ff6b6b;
+.fill-checkbox:checked + .fill-label::before {
+  background-color: #ffac33; /* Yellow */
 }
 
-.fill-checkbox:checked+.fill-label::after {
-  content: '\2714';
-  color: #fff;
+.fill-checkbox:checked + .fill-label::after {
+  content: '\2714'; /* Unicode checkmark symbol */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
   font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
 }
 
-/* Responsive design */
+.color-controls-container {
+  border: 2px solid #ffac33; /* Yellow */
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto; /* Center the block horizontally */
+  margin-bottom: 20px;
+  display: inline-block;
+  text-align: center; /* Center the content horizontally */
+}
+
+.color-controls-container #colorControls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the sliders horizontally */
+}
+
+.color-controls-container .slider-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust spacing between sliders */
+  margin-bottom: 10px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 17px;
+}
+
+.color-controls-container .slider-container label {
+  margin-right: 10px;
+}
+
+.color-controls-container .slider-container input[type="range"] {
+  width: 150px;
+  height: 10px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  outline: none;
+}
+
+#currentColor {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50%; /* Make it a circle */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+canvas {
+  border: 4px solid #ffac33; /* Yellow */
+  cursor: crosshair;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure canvas does not exceed its container */
+}
+
+.controls {
+  margin-top: 20px;
+  max-width: 100%; /* Ensure controls do not exceed their container */
+}
+
+.controls button {
+  margin-bottom: 10px;
+}
+
+.btn-cute {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #ffac33; /* Yellow */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.icon {
+  width: 20px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Adjust the spacing between icon and text */
+}
+
+.btn-cute:hover {
+  background-color: #ffbf00; /* Lighter yellow */
+}
+
+.btn.active {
+  background-color: #6c757d; /* Dark grey */
+  color: #fff;
+}
+
+.controls select {
+  margin-bottom: 10px;
+  border: 1px solid #ffac33; /* Yellow */
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 5px 10px;
+  font-family: 'Comic Sans MS', cursive;
+  color: #ffac33; /* Yellow */
+}
+
+.controls select.cute-select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 172, 51, 0.8); /* Light yellow */
+}
+
 @media (max-width: 768px) {
+  /* Adjust styles for smaller screens */
   .time-widget {
-    font-size: 16px;
+    padding: 8px 16px;
+    font-size: 20px;
   }
 
+  .clock-icon {
+    width: 24px;
+    margin-right: 8px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+  
   .btn-cute {
-    font-size: 12px;
-    padding: 8px 12px;
+    font-size: 14px;
+    padding: 8px 16px;
   }
-
-  .slider-container input[type="range"] {
-    width: 120px;
+  
+  .controls button {
+    margin-bottom: 8px;
+  }
+  
+  .controls select {
+    padding: 4px 8px;
   }
 }
