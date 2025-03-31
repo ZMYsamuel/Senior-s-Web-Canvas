@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <!-- Metadata and external stylesheets -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canvas Painter</title>
+  <!-- Bootstrap CSS for styling -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <!-- Time widget displaying the current time -->
   <div id="timeWidget" class="time-widget">
     <img src="./src/clock_icon.png" alt="Clock" class="clock-icon">
     <span id="timeText" class="time-text"></span>
   </div>
+
+  <!-- Main container for the canvas and controls -->
   <div class="container">
+    <!-- Canvas element for drawing -->
     <canvas id="paintCanvas" width="800" height="600"></canvas>
+
+    <!-- Controls for drawing tools and settings -->
     <div class="controls">
+      <!-- Color and brush size controls -->
       <div class="color-controls-container">
         <div id="colorControls">
+          <!-- Brush size slider -->
           <div class="slider-container">
             <label for="brushSize">Brush Size:</label>
             <input type="range" id="brushSize" min="1" max="20" value="3">
           </div>
+          <!-- RGB sliders for color selection -->
           <div class="slider-container">
             <label for="redSlider">Red:</label>
             <input type="range" id="redSlider" min="0" max="255" value="0">
@@ -33,15 +47,16 @@
             <label for="blueSlider">Blue:</label>
             <input type="range" id="blueSlider" min="0" max="255" value="0">
           </div>
+          <!-- Display the currently selected color -->
           <div id="currentColor"></div>
         </div>
+        <!-- Font family and size selection -->
         <select id="fontFamilySelect" class="form-control cute-select">
           <option value="Arial">Arial</option>
           <option value="Verdana">Verdana</option>
           <option value="Comic Sans MS">Comic Sans MS</option>
           <option value="Tahoma">Tahoma</option>
           <option value="Times New Roman">Times New Roman</option>
-          <!-- Add more font options as needed -->
         </select>
         <select id="fontSizeSelect" class="form-control cute-select">
           <option value="12">12px</option>
@@ -50,27 +65,61 @@
           <option value="18">18px</option>
           <option value="20">20px</option>
           <option value="24">24px</option>
-          <!-- Add more font size options as needed -->
         </select>
       </div>
-      <button id="brushBtn" class="btn btn-cute active"><i class="fas fa-paint-brush"></i><img src="./src/brush_icon.png" class="icon"> Brush</button>
-      <button id="eraserBtn" class="btn btn-cute"><i class="fas fa-eraser"></i><img src="./src/eraser_icon.png" class="icon"> Eraser</button>
-      <button id="textBtn" class="btn btn-cute"><i class="fas fa-font"></i><img src="./src/text_icon.png" class="icon"> Text</button>
-      <button id="lineBtn" class="btn btn-cute"><i class="fas fa-line"></i><img src="./src/line_icon.png" class="icon"> Line</button>
-      <button id="circleBtn" class="btn btn-cute"><i class="fas fa-circle"></i><img src="./src/circle_icon.png" class="icon"> Circle</button>
-      <button id="rectangleBtn" class="btn btn-cute"><i class="fas fa-rectangle"></i><img src="./src/rectangle_icon.png" class="icon"> Rectangle</button>
-      <button id="triangleBtn" class="btn btn-cute"><i class="fas fa-triangle"></i><img src="./src/triangle_icon.png" class="icon"> Triangle</button>
+
+      <!-- Tool buttons for drawing and editing -->
+      <button id="brushBtn" class="btn btn-cute active">
+        <i class="fas fa-paint-brush"></i><img src="./src/brush_icon.png" class="icon"> Brush
+      </button>
+      <button id="eraserBtn" class="btn btn-cute">
+        <i class="fas fa-eraser"></i><img src="./src/eraser_icon.png" class="icon"> Eraser
+      </button>
+      <button id="textBtn" class="btn btn-cute">
+        <i class="fas fa-font"></i><img src="./src/text_icon.png" class="icon"> Text
+      </button>
+      <button id="lineBtn" class="btn btn-cute">
+        <i class="fas fa-line"></i><img src="./src/line_icon.png" class="icon"> Line
+      </button>
+      <button id="circleBtn" class="btn btn-cute">
+        <i class="fas fa-circle"></i><img src="./src/circle_icon.png" class="icon"> Circle
+      </button>
+      <button id="rectangleBtn" class="btn btn-cute">
+        <i class="fas fa-rectangle"></i><img src="./src/rectangle_icon.png" class="icon"> Rectangle
+      </button>
+      <button id="triangleBtn" class="btn btn-cute">
+        <i class="fas fa-triangle"></i><img src="./src/triangle_icon.png" class="icon"> Triangle
+      </button>
+
+      <!-- Checkbox for toggling shape fill -->
       <input type="checkbox" id="fillCheckbox" class="fill-checkbox">
       <label for="fillCheckbox" class="fill-label">Fill Shape</label>
-      <button id="clearBtn" class="btn btn-cute"><i class="fas fa-trash-alt"></i><img src="./src/clear_icon.png" class="icon"> Clear Canvas</button>
-      <button id="undoBtn" class="btn btn-cute"><i class="fas fa-undo"></i><img src="./src/undo_icon.png" class="icon"> Undo</button>
-      <button id="redoBtn" class="btn btn-cute"><i class="fas fa-redo"></i><img src="./src/redo_icon.png" class="icon"> Redo</button>
+
+      <!-- Action buttons for canvas operations -->
+      <button id="clearBtn" class="btn btn-cute">
+        <i class="fas fa-trash-alt"></i><img src="./src/clear_icon.png" class="icon"> Clear Canvas
+      </button>
+      <button id="undoBtn" class="btn btn-cute">
+        <i class="fas fa-undo"></i><img src="./src/undo_icon.png" class="icon"> Undo
+      </button>
+      <button id="redoBtn" class="btn btn-cute">
+        <i class="fas fa-redo"></i><img src="./src/redo_icon.png" class="icon"> Redo
+      </button>
+
+      <!-- File input for uploading images -->
       <input type="file" id="fileInput" style="display: none;">
-      <button id="uploadBtn" class="btn btn-cute"><i class="fas fa-upload"></i><img src="./src/upload_icon.png" class="icon"> Upload Image</button>
-      <button id="downloadBtn" class="btn btn-cute"><i class="fas fa-download"></i><img src="./src/download_icon.png" class="icon"> Download</button>
+      <button id="uploadBtn" class="btn btn-cute">
+        <i class="fas fa-upload"></i><img src="./src/upload_icon.png" class="icon"> Upload Image
+      </button>
+      <button id="downloadBtn" class="btn btn-cute">
+        <i class="fas fa-download"></i><img src="./src/download_icon.png" class="icon"> Download
+      </button>
     </div>
   </div>
+
+  <!-- External scripts -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

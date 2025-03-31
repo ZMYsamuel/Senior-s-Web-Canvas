@@ -1,221 +1,379 @@
-body, html {
+/* Set default styles for the entire page */
+body,
+html {
   margin: 40px;
+  /* Add margin around the page */
   padding: 0;
+  /* Remove default padding */
   height: 100%;
+  /* Ensure the body and html take up the full height of the viewport */
   background-image: url('./src/background.png');
+  /* Set a background image */
   background-size: cover;
+  /* Ensure the background image covers the entire area */
   background-position: center;
-  /* background-repeat: no-repeat; */
+  /* Center the background image */
+  /* background-repeat: no-repeat; Uncomment to prevent the background from repeating */
 }
 
+/* Style for the time widget displayed on the page */
 .time-widget {
   position: fixed;
+  /* Keep the widget fixed in place */
   left: 20px;
+  /* Position it 20px from the left edge */
   top: 20px;
-  background-color: #ffc3a0; /* Light peach */
-  border: 2px solid #ff6b6b; /* Coral pink */
+  /* Position it 20px from the top edge */
+  background-color: #ffc3a0;
+  /* Light peach background color */
+  border: 2px solid #ff6b6b;
+  /* Coral pink border */
   border-radius: 20px;
+  /* Rounded corners */
   padding: 10px 20px;
+  /* Add padding inside the widget */
   font-family: 'Comic Sans MS', cursive;
+  /* Use a playful font */
   font-size: 24px;
+  /* Set font size */
   display: flex;
+  /* Use flexbox for layout */
   align-items: center;
+  /* Vertically center the content */
   justify-content: space-between;
+  /* Space out the content evenly */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add a subtle shadow for depth */
 }
 
+/* Style for the text inside the time widget */
 .time-text {
-  color: #ff6b6b; /* Coral pink */
+  color: #ff6b6b;
+  /* Coral pink text color */
 }
 
+/* Style for the clock icon inside the time widget */
 .clock-icon {
   width: 30px;
+  /* Set the width of the icon */
   height: auto;
+  /* Maintain the aspect ratio */
   margin-right: 10px;
+  /* Add spacing between the icon and text */
 }
 
+/* Hide the checkbox input for custom styling */
 .fill-checkbox {
   display: none;
+  /* Completely hide the checkbox */
 }
 
+/* Style for the label associated with the checkbox */
 .fill-label {
   font-family: 'Comic Sans MS', cursive;
+  /* Use a playful font */
   font-size: 16px;
-  color: #ffac33; /* Yellow */
+  /* Set font size */
+  color: #ffac33;
+  /* Yellow text color */
   cursor: pointer;
-  user-select: none; /* Prevent text selection */
+  /* Change cursor to pointer on hover */
+  user-select: none;
+  /* Prevent text selection */
   margin-right: 10px;
+  /* Add spacing between labels */
 }
 
+/* Add a custom checkbox appearance before the label */
 .fill-label::before {
   content: '';
+  /* Empty content for the box */
   display: inline-block;
+  /* Make it inline */
   width: 20px;
+  /* Set width */
   height: 20px;
+  /* Set height */
   background-color: #fff;
-  border: 2px solid #ffac33; /* Yellow */
+  /* White background */
+  border: 2px solid #ffac33;
+  /* Yellow border */
   border-radius: 5px;
+  /* Rounded corners */
   vertical-align: middle;
+  /* Align with text */
   margin-right: 5px;
+  /* Add spacing between box and label */
 }
 
-.fill-checkbox:checked + .fill-label::before {
-  background-color: #ffac33; /* Yellow */
+/* Change the appearance of the checkbox when checked */
+.fill-checkbox:checked+.fill-label::before {
+  background-color: #ffac33;
+  /* Yellow background */
 }
 
-.fill-checkbox:checked + .fill-label::after {
-  content: '\2714'; /* Unicode checkmark symbol */
+/* Add a checkmark when the checkbox is checked */
+.fill-checkbox:checked+.fill-label::after {
+  content: '\2714';
+  /* Unicode checkmark symbol */
   display: inline-block;
+  /* Make it inline */
   width: 20px;
+  /* Set width */
   height: 20px;
+  /* Set height */
   font-size: 14px;
+  /* Set font size */
   line-height: 20px;
+  /* Center the checkmark vertically */
   text-align: center;
+  /* Center the checkmark horizontally */
   color: #fff;
+  /* White checkmark color */
 }
 
+/* Style for the container holding color controls */
 .color-controls-container {
-  border: 2px solid #ffac33; /* Yellow */
+  border: 2px solid #ffac33;
+  /* Yellow border */
   background-color: #fff;
+  /* White background */
   border-radius: 20px;
+  /* Rounded corners */
   padding: 20px;
-  margin: auto; /* Center the block horizontally */
+  /* Add padding inside the container */
+  margin: auto;
+  /* Center the container horizontally */
   margin-bottom: 20px;
+  /* Add spacing below the container */
   display: inline-block;
-  text-align: center; /* Center the content horizontally */
+  /* Inline-block layout */
+  text-align: center;
+  /* Center the content horizontally */
 }
 
+/* Style for the color controls section */
 .color-controls-container #colorControls {
   display: flex;
+  /* Use flexbox for layout */
   flex-wrap: wrap;
-  justify-content: center; /* Center the sliders horizontally */
+  /* Allow wrapping of child elements */
+  justify-content: center;
+  /* Center the sliders horizontally */
 }
 
+/* Style for individual slider containers */
 .color-controls-container .slider-container {
   display: flex;
+  /* Use flexbox for layout */
   align-items: center;
-  margin-right: 20px; /* Adjust spacing between sliders */
+  /* Vertically center the content */
+  margin-right: 20px;
+  /* Add spacing between sliders */
   margin-bottom: 10px;
+  /* Add spacing below sliders */
   font-family: 'Comic Sans MS', cursive;
+  /* Use a playful font */
   font-size: 17px;
+  /* Set font size */
 }
 
+/* Style for slider labels */
 .color-controls-container .slider-container label {
   margin-right: 10px;
+  /* Add spacing between label and slider */
 }
 
+/* Style for range input sliders */
 .color-controls-container .slider-container input[type="range"] {
   width: 150px;
+  /* Set slider width */
   height: 10px;
+  /* Set slider height */
   background: #f0f0f0;
+  /* Light gray background */
   border-radius: 5px;
+  /* Rounded corners */
   outline: none;
+  /* Remove default outline */
 }
 
+/* Style for the current color indicator */
 #currentColor {
   display: inline-block;
+  /* Inline-block layout */
   width: 30px;
+  /* Set width */
   height: 30px;
+  /* Set height */
   border: 1px solid #ccc;
-  border-radius: 50%; /* Make it a circle */
+  /* Light gray border */
+  border-radius: 50%;
+  /* Make it a circle */
 }
 
+/* Style for the main container */
 .container {
   display: flex;
+  /* Use flexbox for layout */
   flex-direction: column;
+  /* Arrange children in a column */
   align-items: center;
+  /* Center children horizontally */
   justify-content: center;
+  /* Center children vertically */
   height: 100%;
+  /* Take up full height of the viewport */
   padding: 20px;
+  /* Add padding inside the container */
 }
 
+/* Style for the canvas element */
 canvas {
-  border: 4px solid #ffac33; /* Yellow */
+  border: 4px solid #ffac33;
+  /* Yellow border */
   cursor: crosshair;
+  /* Change cursor to crosshair */
   background-color: #fff;
+  /* White background */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 100%; /* Ensure canvas does not exceed its container */
+  /* Add a subtle shadow */
+  max-width: 100%;
+  /* Ensure canvas does not exceed its container */
 }
 
+/* Style for the controls section */
 .controls {
   margin-top: 20px;
-  max-width: 100%; /* Ensure controls do not exceed their container */
+  /* Add spacing above the controls */
+  max-width: 100%;
+  /* Ensure controls do not exceed their container */
 }
 
+/* Style for buttons inside the controls */
 .controls button {
   margin-bottom: 10px;
+  /* Add spacing below buttons */
 }
 
+/* Style for custom buttons */
 .btn-cute {
   padding: 10px 20px;
+  /* Add padding inside the button */
   margin-right: 10px;
-  background-color: #ffac33; /* Yellow */
+  /* Add spacing between buttons */
+  background-color: #ffac33;
+  /* Yellow background */
   border: none;
+  /* Remove default border */
   border-radius: 20px;
+  /* Rounded corners */
   cursor: pointer;
+  /* Change cursor to pointer on hover */
   font-family: 'Comic Sans MS', cursive;
+  /* Use a playful font */
   font-size: 16px;
+  /* Set font size */
   color: #fff;
+  /* White text color */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add a subtle shadow */
   transition: background-color 0.3s;
+  /* Smooth transition for background color */
 }
 
+/* Style for icons inside buttons */
 .icon {
-  width: 20px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 5px; /* Adjust the spacing between icon and text */
+  width: 20px;
+  /* Set icon width */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin-right: 5px;
+  /* Add spacing between icon and text */
 }
 
+/* Change button background color on hover */
 .btn-cute:hover {
-  background-color: #ffbf00; /* Lighter yellow */
+  background-color: #ffbf00;
+  /* Lighter yellow */
 }
 
+/* Style for active buttons */
 .btn.active {
-  background-color: #6c757d; /* Dark grey */
+  background-color: #6c757d;
+  /* Dark grey background */
   color: #fff;
+  /* White text color */
 }
 
+/* Style for dropdown selects inside controls */
 .controls select {
   margin-bottom: 10px;
-  border: 1px solid #ffac33; /* Yellow */
+  /* Add spacing below selects */
+  border: 1px solid #ffac33;
+  /* Yellow border */
   border-radius: 20px;
+  /* Rounded corners */
   background-color: #fff;
+  /* White background */
   padding: 5px 10px;
+  /* Add padding inside the select */
   font-family: 'Comic Sans MS', cursive;
-  color: #ffac33; /* Yellow */
+  /* Use a playful font */
+  color: #ffac33;
+  /* Yellow text color */
 }
 
+/* Style for focused dropdown selects */
 .controls select.cute-select:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(255, 172, 51, 0.8); /* Light yellow */
+  /* Remove default outline */
+  box-shadow: 0 0 5px rgba(255, 172, 51, 0.8);
+  /* Light yellow shadow */
 }
 
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
-  /* Adjust styles for smaller screens */
+
+  /* Adjust styles for the time widget */
   .time-widget {
     padding: 8px 16px;
+    /* Reduce padding */
     font-size: 20px;
+    /* Reduce font size */
   }
 
+  /* Adjust styles for the clock icon */
   .clock-icon {
     width: 24px;
+    /* Reduce icon width */
     margin-right: 8px;
+    /* Reduce spacing */
   }
 
+  /* Adjust styles for the main container */
   .container {
     padding: 10px;
+    /* Reduce padding */
   }
-  
+
+  /* Adjust styles for buttons */
   .btn-cute {
     font-size: 14px;
+    /* Reduce font size */
     padding: 8px 16px;
+    /* Reduce padding */
   }
-  
+
+  /* Adjust styles for buttons inside controls */
   .controls button {
     margin-bottom: 8px;
+    /* Reduce spacing */
   }
-  
+
+  /* Adjust styles for dropdown selects */
   .controls select {
     padding: 4px 8px;
+    /* Reduce padding */
   }
 }
